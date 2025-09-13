@@ -82,12 +82,18 @@
             font-weight: 600;
             padding: 8px 16px;
             border-radius: 20px;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.3s, color 0.3s, outline-offset 0.2s;
         }
 
         nav a:hover, nav a.active {
             background-color: var(--primary-color);
             color: white;
+        }
+        
+        /* Accessibility Improvement: Visible focus style for keyboard users */
+        nav a:focus-visible {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 3px;
         }
 
         .content-section {
@@ -96,6 +102,7 @@
             padding: 30px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
+            scroll-margin-top: 80px; /* Offset for sticky nav */
         }
 
         h2 {
@@ -125,6 +132,7 @@
         /* --- NEW & IMPROVED STYLES --- */
         .historical-image {
             max-width: 100%;
+            height: auto;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             margin: 25px auto;
@@ -192,7 +200,9 @@
             border-color: #333 transparent transparent transparent;
         }
 
-        .tooltip:hover .tooltip-text {
+        /* Accessibility Improvement: Show tooltip on hover and keyboard focus */
+        .tooltip:hover .tooltip-text,
+        .tooltip:focus .tooltip-text {
             visibility: visible;
             opacity: 1;
         }
@@ -268,7 +278,8 @@
         </ul>
     </nav>
 
-    <div class="container">
+    <!-- Semantic HTML Improvement: Use <main> for the primary content -->
+    <main class="container">
 
         <section id="introduction" class="content-section">
             <h2>Pengantar: Api dalam Sekam</h2>
@@ -291,9 +302,10 @@
                 <figcaption>Pasukan KNIL di Maluku, banyak dari mereka merasa cemas dengan masa depan di bawah TNI.</figcaption>
             </figure>
 
-            <h3 id="andi-aziz">Gerakan Andi Aziz di Makassar (April 1950)</h3>
+            <h3>Gerakan Andi Aziz di Makassar (April 1950)</h3>
             <h4>Mengapa Ini Terjadi? Suasana di Makassar</h4>
-            <p>Bayangkan Anda seorang prajurit <span class="tooltip">KNIL<span class="tooltip-text">Koninklijk Nederlands-Indisch Leger (Tentara Kerajaan Hindia Belanda). Tentara kolonial Belanda. Banyak anggotanya berasal dari Maluku dan Manado, mereka terlatih, disiplin, dan merasa memiliki status elite.</span></span> di Makassar. Anda dilatih oleh Belanda, merasa profesional, dan menganggap diri Anda penjaga keamanan di tanah kelahiran Anda. Tiba-tiba, datang berita bahwa "orang-orang Jawa" dari TNI akan datang mengambil alih. Bagi banyak prajurit KNIL, TNI adalah "gerombolan" atau "tentara perjuangan" yang kurang profesional. Muncul ketakutan, kecurigaan, dan harga diri yang terluka. Mereka tidak ingin "diperintah" oleh orang luar.</p>
+            <!-- Accessibility Improvement: Add tabindex="0" to make span focusable -->
+            <p>Bayangkan Anda seorang prajurit <span class="tooltip" tabindex="0">KNIL<span class="tooltip-text">Koninklijk Nederlands-Indisch Leger (Tentara Kerajaan Hindia Belanda). Tentara kolonial Belanda. Banyak anggotanya berasal dari Maluku dan Manado, mereka terlatih, disiplin, dan merasa memiliki status elite.</span></span> di Makassar. Anda dilatih oleh Belanda, merasa profesional, dan menganggap diri Anda penjaga keamanan di tanah kelahiran Anda. Tiba-tiba, datang berita bahwa "orang-orang Jawa" dari TNI akan datang mengambil alih. Bagi banyak prajurit KNIL, TNI adalah "gerombolan" atau "tentara perjuangan" yang kurang profesional. Muncul ketakutan, kecurigaan, dan harga diri yang terluka. Mereka tidak ingin "diperintah" oleh orang luar.</p>
             <blockquote>"Kami ingin keamanan di Indonesia Timur tetap di tangan putra daerah, bukan oleh tentara dari Jawa!"</blockquote>
             <p>Kapten Andi Aziz, seorang perwira eks-KNIL yang dihormati, menyalurkan kegelisahan ini. Gerakannya bukanlah upaya memisahkan diri, melainkan sebuah unjuk kekuatan untuk mempertahankan status quo dan menolak apa yang mereka anggap sebagai dominasi pusat.</p>
             <ul>
@@ -302,7 +314,7 @@
                 <li><strong>Akhir Pemberontakan:</strong> Tanpa pemimpinnya, perlawanan dengan cepat padam. Pasukan TNI mendarat dan mengamankan Makassar. Peristiwa ini justru mempercepat pembubaran RIS, karena menunjukkan betapa rapuhnya negara federal.</li>
             </ul>
 
-            <h3 id="rms">Republik Maluku Selatan (RMS) (April 1950)</h3>
+            <h3>Republik Maluku Selatan (RMS) (April 1950)</h3>
             <h4>Mengapa Ini Terjadi? Suasana di Ambon</h4>
             <p>Jika gerakan Andi Aziz adalah soal status dan profesionalisme, RMS lebih dalam: ini soal identitas dan ideologi. Selama berabad-abad, banyak orang Maluku, terutama di Ambon, memiliki hubungan khusus dengan Belanda. Mereka menjadi tentara KNIL, pegawai negeri, dan pendeta. Bagi mereka, kembali ke NKRI yang dipimpin oleh "kaum nasionalis Jawa" terasa seperti sebuah pengkhianatan terhadap sejarah dan masa depan mereka.</p>
             <p>Ketika RIS—yang memberi mereka otonomi di dalam Negara Indonesia Timur—akan dibubarkan, kepanikan melanda. Dr. Chris Soumokil, seorang politisi cerdas, memanfaatkan sentimen ini. Ia meyakinkan banyak orang bahwa satu-satunya cara untuk selamat adalah dengan berdiri sendiri, lepas dari Indonesia.</p>
@@ -404,7 +416,8 @@
             </ul>
             <p>Ketika tuntutan mereka untuk otonomi dan keadilan diabaikan, mereka mengambil langkah ekstrem. Pada 15 Februari 1958, PRRI (Pemerintahan Revolusioner Republik Indonesia) diproklamasikan di Padang, yang kemudian didukung oleh Permesta (Perjuangan Rakyat Semesta) di Sulawesi. Ini bukan untuk memisahkan diri, tetapi untuk "mengoreksi" pemerintah pusat.</p>
             <blockquote>"Kami tidak memberontak untuk memisahkan diri, kami memberontak karena kami juga Indonesia, dan kami menuntut keadilan!"</blockquote>
-            <p>Pemberontakan ini menjadi rumit karena Perang Dingin. Amerika Serikat, melalui <span class="tooltip">CIA<span class="tooltip-text">Badan Intelijen Pusat AS ikut campur tangan karena khawatir pengaruh PKI yang semakin kuat di bawah Soekarno. Mereka memberikan bantuan senjata, pesawat, dan dana kepada pemberontak PRRI/Permesta.</span></span>, diam-diam mendukung PRRI/Permesta karena khawatir Soekarno semakin dekat dengan komunis. Dukungan ini berakhir setelah pilot CIA, Allen Pope, ditembak jatuh dan ditangkap saat misi pengeboman di Ambon.</p>
+            <!-- Accessibility Improvement: Add tabindex="0" to make span focusable -->
+            <p>Pemberontakan ini menjadi rumit karena Perang Dingin. Amerika Serikat, melalui <span class="tooltip" tabindex="0">CIA<span class="tooltip-text">Badan Intelijen Pusat AS ikut campur tangan karena khawatir pengaruh PKI yang semakin kuat di bawah Soekarno. Mereka memberikan bantuan senjata, pesawat, dan dana kepada pemberontak PRRI/Permesta.</span></span>, diam-diam mendukung PRRI/Permesta karena khawatir Soekarno semakin dekat dengan komunis. Dukungan ini berakhir setelah pilot CIA, Allen Pope, ditembak jatuh dan ditangkap saat misi pengeboman di Ambon.</p>
             <p>Pemerintah pusat merespons dengan operasi militer besar-besaran yang berhasil menumpas pemberontakan pada tahun 1961. Namun, luka akibat "perang saudara" ini membekas lama.</p>
         </section>
 
@@ -450,44 +463,66 @@
             <p>Era Demokrasi Terpimpin yang penuh gejolak dan romantisme revolusioner telah berakhir. Panggung sejarah telah berganti. Indonesia memasuki babak baru yang sangat berbeda: era Orde Baru di bawah kepemimpinan Jenderal Soeharto.</p>
         </section>
 
-    </div>
+    </main>
 
     <footer>
         <p>Sebuah rangkuman sejarah untuk memahami kompleksitas perjalanan Bangsa Indonesia.</p>
     </footer>
 
     <script>
-        // Script to highlight active nav link on scroll
-        const sections = document.querySelectorAll('.content-section');
-        const navLinks = document.querySelectorAll('nav a');
-        const navbar = document.getElementById('navbar');
-        const navHeight = navbar.offsetHeight;
+        // --- OPTIMIZED & ACCESSIBLE NAV HIGHLIGHT SCRIPT ---
+        // This script uses the IntersectionObserver API for high performance.
+        // It's more efficient than a scroll event listener because it doesn't fire on every pixel scrolled.
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.content-section');
+            const navLinks = document.querySelectorAll('nav a');
+            const navbar = document.getElementById('navbar');
+            const navHeight = navbar.offsetHeight;
 
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - navHeight - 20) { // Adjusted for nav height
-                    current = section.getAttribute('id');
+            // Create a map for quick lookup: 'introduction' -> linkElement
+            const navLinkMap = new Map();
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href.startsWith('#')) {
+                    navLinkMap.set(href.substring(1), link);
                 }
             });
+            
+            const observerOptions = {
+                // The rootMargin effectively moves the "trigger line".
+                // "-${navHeight}px" accounts for the sticky nav's height.
+                // "-40%" means a section is "active" until its bottom is 40% from the viewport bottom.
+                rootMargin: `-${navHeight + 20}px 0px -40% 0px`,
+                threshold: 0
+            };
 
-            // Special handling for nested IDs
-            if (current === 'early-rebellions') {
-                 if (pageYOffset >= document.getElementById('rms').offsetTop - navHeight - 20) {
-                    current = 'rms';
-                 }
-                 if (pageYOffset >= document.getElementById('andi-aziz').offsetTop - navHeight - 20) {
-                    current = 'andi-aziz';
-                 }
-            }
+            const observer = new IntersectionObserver((entries) => {
+                let lastVisibleSectionId = null;
 
+                // Find the last intersecting section, which is the most current one on screen.
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        lastVisibleSectionId = entry.target.id;
+                    }
+                });
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
+                // Update active classes based on the last visible section.
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                if (lastVisibleSectionId) {
+                    const activeLink = navLinkMap.get(lastVisibleSectionId);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
                 }
+            }, observerOptions);
+
+            // Observe each section
+            sections.forEach(section => {
+                observer.observe(section);
             });
         });
     </script>
