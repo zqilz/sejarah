@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catatan Sejarah Indonesia Interaktif - Era Penuh Gejolak</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Slab:wght@400;700&display=swap');
+
+        :root {
+            --bg-color: #f0f4f8;
+            --main-text: #333;
+            --header-color: #1e2a38;
+            --primary-color: #4a90e2;
+            --secondary-color: #f5a623;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --border-radius: 12px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            color: var(--main-text);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, var(--primary-color), #3a7ac8);
+            color: white;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        header h1 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: var(--card-bg);
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--header-color);
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .content-section {
+            background-color: var(--card-bg);
+            margin-top: 30px;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.2rem;
+            color: var(--header-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        h3 {
+            font-family: 'Roboto Slab', serif;
+            color: var(--header-color);
+            font-size: 1.6rem;
+            margin-top: 30px;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+        
+        /* --- NEW & IMPROVED STYLES --- */
+        .historical-image {
+            max-width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin: 25px auto;
+            display: block;
+        }
+
+        figcaption {
+            text-align: center;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+
+        blockquote {
+            border-left: 5px solid var(--secondary-color);
+            margin: 20px 0;
+            padding: 15px 20px;
+            background-color: #fffaf0;
+            font-style: italic;
+            font-size: 1.1rem;
+            font-family: 'Roboto Slab', serif;
+            color: var(--header-color);
+        }
+        
+        /* --- Tooltip --- */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--primary-color);
+            border-bottom: 2px dotted var(--primary-color);
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 280px;
+            background-color: #333;
+            color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -140px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-weight: 400;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .tooltip .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        /* --- Comparison Table --- */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background-color: #eef5fc;
+            font-weight: 700;
+            color: var(--header-color);
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .comparison-table td ul {
+            padding-left: 15px;
+            margin: 0;
+        }
+
+        strong {
+            color: var(--header-color);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            nav ul { gap: 5px; }
+            nav a { padding: 6px 12px; font-size: 0.9rem; }
+            .content-section { padding: 20px; }
+            h2 { font-size: 1.8rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Catatan Sejarah Indonesia</h1>
+        <p>Masa Penuh Gejolak: Mencari Jati Diri Bangsa (1945 - 1966)</p>
+    </header>
+
+    <nav id="navbar">
+        <ul>
+            <li><a href="#introduction">Pengantar</a></li>
+            <li><a href="#early-rebellions">Pemberontakan Awal</a></li>
+            <li><a href="#perbandingan">Perbandingan</a></li>
+            <li><a href="#era-liberal">Era Demokrasi Liberal</a></li>
+            <li><a href="#prri-permesta">PRRI/Permesta</a></li>
+            <li><a href="#demokrasi-terpimpin">Demokrasi Terpimpin</a></li>
+            <li><a href="#akhir-era">Akhir Era</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+
+        <section id="introduction" class="content-section">
+            <h2>Pengantar: Api dalam Sekam</h2>
+            <p>Bayangkan sebuah rumah baru yang besar dan megah, baru saja selesai dibangun. Para penghuninya, yang berasal dari berbagai latar belakang, bersuka cita merayakan kemerdekaan mereka. Namun, di dalam rumah itu, fondasinya masih rapuh. Setiap penghuni punya gagasan sendiri tentang bagaimana cara menata ruangan, siapa yang seharusnya memegang kendali, dan bagaimana membagi sumber daya.</p>
+            <p>Itulah gambaran Indonesia pada periode 1945-1966. Proklamasi bukanlah akhir, melainkan awal dari perjuangan yang sesungguhnya. Bangsa ini dihadapkan pada tiga pertanyaan besar yang mengancam akan merobeknya dari dalam:</p>
+            <ul>
+                <li><strong>Negara Kesatuan atau Federal?</strong> Haruskah kekuasaan terpusat di Jakarta (NKRI), atau haruskah daerah memiliki otonomi luas (RIS)?</li>
+                <li><strong>Demokrasi atau Otoritarianisme?</strong> Apakah sistem parlementer yang bebas cocok untuk bangsa yang baru lahir, atau perlukah seorang pemimpin kuat untuk menyatukan semuanya?</li>
+                <li><strong>Pusat atau Daerah?</strong> Bagaimana memastikan kekayaan alam dari berbagai pulau didistribusikan secara adil dan tidak hanya dinikmati oleh pusat?</li>
+            </ul>
+            <p>Periode ini adalah masa penuh gejolak, idealisme, pengkhianatan, dan pertumpahan darah. Ini adalah kisah tentang bagaimana Indonesia nyaris hancur berkeping-keping, sebelum akhirnya menemukan bentuknya—meski dengan harga yang sangat mahal.</p>
+        </section>
+
+        <section id="early-rebellions" class="content-section">
+            <h2>Pemberontakan Awal: Andi Aziz & RMS</h2>
+            <p>Di tengah euforia pembentukan Republik Indonesia Serikat (RIS), benih-benih perpecahan pertama muncul di Indonesia Timur. Dua peristiwa besar, Gerakan Andi Aziz dan proklamasi RMS, menjadi ujian pertama bagi persatuan bangsa.</p>
+            
+            <figure>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/25/COLLECTIE_TROPENMUSEUM_Een_groep_KNIL-militairen_op_patrouille_op_het_eiland_Boeroe_in_de_Molukken_TMnr_60032902.jpg" alt="Pasukan KNIL di Maluku" class="historical-image">
+                <figcaption>Pasukan KNIL di Maluku, banyak dari mereka merasa cemas dengan masa depan di bawah TNI.</figcaption>
+            </figure>
+
+            <h3 id="andi-aziz">Gerakan Andi Aziz di Makassar (April 1950)</h3>
+            <h4>Mengapa Ini Terjadi? Suasana di Makassar</h4>
+            <p>Bayangkan Anda seorang prajurit <span class="tooltip">KNIL<span class="tooltip-text">Koninklijk Nederlands-Indisch Leger (Tentara Kerajaan Hindia Belanda). Tentara kolonial Belanda. Banyak anggotanya berasal dari Maluku dan Manado, mereka terlatih, disiplin, dan merasa memiliki status elite.</span></span> di Makassar. Anda dilatih oleh Belanda, merasa profesional, dan menganggap diri Anda penjaga keamanan di tanah kelahiran Anda. Tiba-tiba, datang berita bahwa "orang-orang Jawa" dari TNI akan datang mengambil alih. Bagi banyak prajurit KNIL, TNI adalah "gerombolan" atau "tentara perjuangan" yang kurang profesional. Muncul ketakutan, kecurigaan, dan harga diri yang terluka. Mereka tidak ingin "diperintah" oleh orang luar.</p>
+            <blockquote>"Kami ingin keamanan di Indonesia Timur tetap di tangan putra daerah, bukan oleh tentara dari Jawa!"</blockquote>
+            <p>Kapten Andi Aziz, seorang perwira eks-KNIL yang dihormati, menyalurkan kegelisahan ini. Gerakannya bukanlah upaya memisahkan diri, melainkan sebuah unjuk kekuatan untuk mempertahankan status quo dan menolak apa yang mereka anggap sebagai dominasi pusat.</p>
+            <ul>
+                <li><strong>5 April 1950:</strong> Pasukan Andi Aziz merebut kendali Makassar, menawan panglima teritorial APRIS.</li>
+                <li><strong>Tindakan Pemerintah:</strong> Pemerintah RIS di Jakarta tegas. Andi Aziz diberi ultimatum untuk melapor ke Jakarta, namun ia terlambat dan akhirnya ditangkap setibanya di sana.</li>
+                <li><strong>Akhir Pemberontakan:</strong> Tanpa pemimpinnya, perlawanan dengan cepat padam. Pasukan TNI mendarat dan mengamankan Makassar. Peristiwa ini justru mempercepat pembubaran RIS, karena menunjukkan betapa rapuhnya negara federal.</li>
+            </ul>
+
+            <h3 id="rms">Republik Maluku Selatan (RMS) (April 1950)</h3>
+            <h4>Mengapa Ini Terjadi? Suasana di Ambon</h4>
+            <p>Jika gerakan Andi Aziz adalah soal status dan profesionalisme, RMS lebih dalam: ini soal identitas dan ideologi. Selama berabad-abad, banyak orang Maluku, terutama di Ambon, memiliki hubungan khusus dengan Belanda. Mereka menjadi tentara KNIL, pegawai negeri, dan pendeta. Bagi mereka, kembali ke NKRI yang dipimpin oleh "kaum nasionalis Jawa" terasa seperti sebuah pengkhianatan terhadap sejarah dan masa depan mereka.</p>
+            <p>Ketika RIS—yang memberi mereka otonomi di dalam Negara Indonesia Timur—akan dibubarkan, kepanikan melanda. Dr. Chris Soumokil, seorang politisi cerdas, memanfaatkan sentimen ini. Ia meyakinkan banyak orang bahwa satu-satunya cara untuk selamat adalah dengan berdiri sendiri, lepas dari Indonesia.</p>
+            <ul>
+                <li><strong>25 April 1950:</strong> Proklamasi RMS dikumandangkan di Ambon. Ini bukan lagi protes, ini adalah deklarasi kemerdekaan.</li>
+                <li><strong>Tindakan Pemerintah:</strong> Pemerintah Indonesia tidak bisa mentolerir separatisme. Setelah upaya diplomasi gagal, operasi militer besar-besaran dilancarkan.</li>
+                <li><strong>Perang Berdarah:</strong> Pertempuran sengit terjadi di Ambon, memakan banyak korban di kedua belah pihak, termasuk Letkol Slamet Riyadi dari pihak TNI.</li>
+                <li><strong>Akhir Pemberontakan:</strong> Ambon berhasil direbut pada akhir 1950. Soumokil melarikan diri ke Pulau Seram dan melanjutkan perang gerilya hingga ditangkap pada 1963 dan dieksekusi pada 1966. Sisa-sisa gerakan mengungsi ke Belanda dan tetap ada hingga hari ini sebagai "pemerintahan di pengasingan".</li>
+            </ul>
+        </section>
+
+        <section id="perbandingan" class="content-section">
+            <h2>Perbandingan Peristiwa Andi Aziz & RMS</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Aspek</th>
+                        <th>Gerakan Andi Aziz di Makassar</th>
+                        <th>Republik Maluku Selatan (RMS)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Waktu</strong></td>
+                        <td>5 – 26 April 1950 (Berlangsung sangat singkat)</td>
+                        <td>Proklamasi 25 April 1950, perlawanan bersenjata hingga 1963</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lokasi</strong></td>
+                        <td>Makassar, Sulawesi Selatan</td>
+                        <td>Ambon & Pulau Seram, Maluku</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tokoh Utama</strong></td>
+                        <td>Kapten Andi Aziz (Militer, eks-KNIL)</td>
+                        <td>Dr. Chris Soumokil (Sipil, politisi)</td>
+                    </tr>
+                     <tr>
+                        <td><strong>Motivasi Utama</strong></td>
+                        <td><strong>Kekhawatiran Profesional & Status.</strong> Menolak dominasi TNI dan mempertahankan otonomi militer lokal.</td>
+                        <td><strong>Kekhawatiran Identitas & Ideologi.</strong> Menolak NKRI dan ingin mendirikan negara sendiri.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tujuan Akhir</strong></td>
+                        <td><strong>Mempertahankan Negara Indonesia Timur</strong> dalam struktur RIS. Bukan untuk mendirikan negara baru.</td>
+                        <td><strong>Separatisme.</strong> Mendirikan negara merdeka yang terpisah sepenuhnya dari Indonesia.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dampak</strong></td>
+                        <td>
+                            <ul>
+                                <li>Memperlihatkan kegagalan fusi antara KNIL dan TNI.</li>
+                                <li>Mempercepat proses pembubaran RIS dan kembali ke NKRI.</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Memicu konflik berdarah dan trauma mendalam di Maluku.</li>
+                                <li>Melahirkan diaspora RMS di Belanda.</li>
+                                <li>Menjadi preseden bagi pemerintah pusat untuk menindak tegas separatisme.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="era-liberal" class="content-section">
+            <h2>Jeda Penuh Badai: Kekacauan Demokrasi Liberal (1950-1959)</h2>
+            <p>Setelah RIS bubar dan Indonesia kembali menjadi NKRI pada Agustus 1950, bangsa ini mencoba meniru sistem demokrasi Barat. Inilah era Demokrasi Liberal, di mana kekuasaan ada di tangan parlemen dan perdana menteri. Namun, apa yang terjadi di lapangan adalah kekacauan.</p>
+            
+            <figure>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Opening_Konstituante_in_Bandung.jpg" alt="Sidang Konstituante di Bandung" class="historical-image">
+                <figcaption>Sidang Dewan Konstituante di Bandung. Mereka berdebat tanpa henti selama bertahun-tahun namun gagal menghasilkan UUD baru.</figcaption>
+            </figure>
+
+            <h3>Politik "Kursi Goyang"</h3>
+            <p>Partai politik menjamur, masing-masing dengan ideologinya sendiri: nasionalis, agama, sosialis, komunis. Mereka saling sikut di parlemen untuk merebut kekuasaan. Akibatnya:</p>
+            <ul>
+                <li><strong>Kabinet Jatuh Bangun:</strong> Dalam 9 tahun, Indonesia memiliki 7 kabinet berbeda! Rata-rata umur kabinet hanya sekitar satu tahun.</li>
+                <li><strong>Program Tidak Berjalan:</strong> Setiap perdana menteri baru datang dengan program baru, tapi sebelum sempat menjalankannya, kabinetnya sudah dijatuhkan oleh lawan politiknya. Pembangunan ekonomi pun mandek.</li>
+                <li><strong>Konstituante Gagal Total:</strong> Badan yang ditugaskan membuat UUD baru (Konstituante) terjebak dalam perdebatan tanpa akhir, terutama soal dasar negara: Pancasila atau Islam?</li>
+            </ul>
+            <blockquote>Rakyat lelah dengan politisi yang hanya bertengkar di Jakarta, sementara perut mereka lapar dan pemberontakan meletus di daerah. Stabilitas menjadi barang mahal yang dirindukan semua orang.</blockquote>
+            <p>Kekacauan inilah yang menjadi panggung bagi dua perkembangan besar: pemberontakan daerah yang lebih masif (PRRI/Permesta) dan munculnya keinginan akan seorang "pemimpin kuat" yang bisa mengakhiri semua ini—Soekarno.</p>
+        </section>
+
+        <section id="prri-permesta" class="content-section">
+            <h2>PRRI / Permesta (1957-1961): Protes dari Daerah</h2>
+            <p>Jika RMS adalah soal separatisme ideologis, PRRI/Permesta adalah ledakan kemarahan karena ketidakadilan ekonomi dan sentralisasi kekuasaan Jakarta.</p>
+            
+            <h3>Mengapa Ini Terjadi? Perasaan Dianaktirikan</h3>
+            <p>Para pemimpin militer dan sipil di Sumatera dan Sulawesi merasa daerah mereka, yang kaya akan karet, kopra, dan minyak, telah menjadi "sapi perah" bagi Jakarta. Devisa hasil ekspor mereka dibawa ke pusat, tapi yang kembali untuk pembangunan daerah sangat sedikit. Jalanan rusak, sekolah kurang, dan kesejahteraan rakyat terabaikan. Sementara itu, politisi di Jakarta sibuk berebut kekuasaan.</p>
+            <p>Kekecewaan ini pertama kali muncul dalam bentuk pembentukan dewan-dewan militer daerah yang menentang pusat:</p>
+            <ul>
+                <li><strong>Dewan Banteng</strong> (Sumatera Barat) pimpinan Letkol Ahmad Husein</li>
+                <li><strong>Dewan Gajah</strong> (Sumatera Utara) pimpinan Kolonel Maludin Simbolon</li>
+                <li><strong>Dewan Manguni</strong> (Sulawesi Utara) pimpinan Kolonel Ventje Sumual</li>
+            </ul>
+            <p>Ketika tuntutan mereka untuk otonomi dan keadilan diabaikan, mereka mengambil langkah ekstrem. Pada 15 Februari 1958, PRRI (Pemerintahan Revolusioner Republik Indonesia) diproklamasikan di Padang, yang kemudian didukung oleh Permesta (Perjuangan Rakyat Semesta) di Sulawesi. Ini bukan untuk memisahkan diri, tetapi untuk "mengoreksi" pemerintah pusat.</p>
+            <blockquote>"Kami tidak memberontak untuk memisahkan diri, kami memberontak karena kami juga Indonesia, dan kami menuntut keadilan!"</blockquote>
+            <p>Pemberontakan ini menjadi rumit karena Perang Dingin. Amerika Serikat, melalui <span class="tooltip">CIA<span class="tooltip-text">Badan Intelijen Pusat AS ikut campur tangan karena khawatir pengaruh PKI yang semakin kuat di bawah Soekarno. Mereka memberikan bantuan senjata, pesawat, dan dana kepada pemberontak PRRI/Permesta.</span></span>, diam-diam mendukung PRRI/Permesta karena khawatir Soekarno semakin dekat dengan komunis. Dukungan ini berakhir setelah pilot CIA, Allen Pope, ditembak jatuh dan ditangkap saat misi pengeboman di Ambon.</p>
+            <p>Pemerintah pusat merespons dengan operasi militer besar-besaran yang berhasil menumpas pemberontakan pada tahun 1961. Namun, luka akibat "perang saudara" ini membekas lama.</p>
+        </section>
+
+        <section id="demokrasi-terpimpin" class="content-section">
+            <h2>Demokrasi Terpimpin (1959-1965): "Aku yang Pimpin!"</h2>
+            <p>Muak dengan kekacauan Demokrasi Liberal, Soekarno mengambil alih. Melalui <strong>Dekrit Presiden 5 Juli 1959</strong>, ia membubarkan Konstituante dan menyatakan kembali ke UUD 1945. Inilah awal dari era Demokrasi Terpimpin, di mana kekuasaan terpusat di tangan Presiden Soekarno.</p>
+            
+            <figure>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Sukarno_addressing_a_crowd.jpg/1024px-Sukarno_addressing_a_crowd.jpg" alt="Soekarno berpidato di hadapan massa" class="historical-image">
+                <figcaption>Presiden Soekarno, seorang orator ulung, membakar semangat massa dengan jargon-jargon revolusionernya selama era Demokrasi Terpimpin.</figcaption>
+            </figure>
+
+            <h3>Dua Sisi Mata Uang</h3>
+            <p>Era ini seperti dua sisi mata uang. Di satu sisi, ada stabilitas politik dan kebanggaan nasional yang membara. Di sisi lain, demokrasi diberangus dan ekonomi rakyat hancur.</p>
+
+            <h4>Sisi Gemilang: Revolusi Belum Selesai!</h4>
+            <ul>
+                <li><strong>Stabilitas Politik:</strong> Soekarno berhasil mengakhiri "politik kursi goyang". Ia menjadi pusat dari semua kekuasaan.</li>
+                <li><strong>Politik Mercusuar:</strong> Proyek-proyek raksasa seperti Monas, Stadion Gelora Bung Karno, dan Hotel Indonesia dibangun untuk menunjukkan Indonesia sebagai "mercusuar" bagi negara-negara baru di dunia.</li>
+                <li><strong>Perebutan Irian Barat (TRIKORA):</strong> Melalui kombinasi diplomasi dan konfrontasi militer, Indonesia berhasil merebut Irian Barat dari tangan Belanda pada 1963. Ini adalah puncak kemenangan politik luar negeri Soekarno.</li>
+                <li><strong>Konfrontasi Malaysia (DWIKORA):</strong> Soekarno menentang pembentukan Federasi Malaysia, yang dianggapnya proyek "boneka" Inggris. Slogan "Ganyang Malaysia" menggelora di seluruh negeri.</li>
+                <li><strong>Nasakom:</strong> Soekarno mencoba menyatukan tiga kekuatan politik terbesar: <strong>Nas</strong>ionalis (PNI), <strong>A</strong>gama (NU), dan <strong>Kom</strong>unis (PKI). Tujuannya adalah persatuan, namun ini justru memberikan panggung besar bagi PKI untuk tumbuh pesat.</li>
+            </ul>
+            
+            <h4>Sisi Gelap: Perut Rakyat Lapar</h4>
+            <ul>
+                <li><strong>Kekuasaan Absolut:</strong> Soekarno menjadi pemimpin besar revolusi. DPR dilemahkan (menjadi DPR-GR), pers kritis dibungkam, dan lawan politik dipenjara.</li>
+                <li><strong>Ekonomi Merosot:</strong> Politik "berdiri di atas kaki sendiri" (Berdikari) dan pengeluaran besar untuk proyek mercusuar serta konfrontasi militer menyebabkan ekonomi hancur. Inflasi meroket (mencapai lebih dari 600% pada 1965), dan rakyat harus antre untuk mendapatkan bahan pokok.</li>
+                <li><strong>Segitiga Kekuasaan Berbahaya:</strong> Di balik layar, terjadi pertarungan sengit antara tiga kekuatan: <strong>Soekarno</strong>, <strong>TNI AD</strong> (yang anti-komunis), dan <strong>PKI</strong> (yang semakin kuat dan didukung Soekarno). Ketiganya saling curiga, menciptakan suasana tegang seperti bom waktu.</li>
+            </ul>
+        </section>
+
+        <section id="akhir-era" class="content-section">
+            <h2>Klimaks: G30S dan Akhir Sebuah Era (1965-1966)</h2>
+            <p>Bom waktu itu akhirnya meledak pada malam 30 September 1965. Sebuah kelompok yang menamakan diri Gerakan 30 September (G30S) menculik dan membunuh enam jenderal tinggi Angkatan Darat. Mereka mengklaim tindakan itu untuk menyelamatkan Presiden Soekarno dari "Dewan Jenderal" yang akan melakukan kudeta.</p>
+            <p>Hingga kini, peristiwa ini masih diselimuti misteri. Namun, tuduhan dengan cepat diarahkan kepada PKI sebagai dalangnya. Momen ini dimanfaatkan oleh seorang jenderal yang saat itu luput dari penculikan: Mayor Jenderal Soeharto, Panglima Kostrad.</p>
+            <p>Dalam waktu singkat, Soeharto memimpin penumpasan G30S. Apa yang terjadi selanjutnya adalah salah satu tragedi paling kelam dalam sejarah Indonesia:</p>
+            <ul>
+                <li><strong>Pembantaian Massal:</strong> Dengan dukungan militer, massa anti-komunis melakukan pembersihan besar-besaran terhadap anggota dan simpatisan PKI di seluruh negeri. Diperkirakan ratusan ribu hingga lebih dari satu juta orang tewas.</li>
+                <li><strong>Lumpuhnya Kekuasaan Soekarno:</strong> Kharisma Soekarno runtuh. Ia dianggap gagal mengendalikan situasi. Mahasiswa turun ke jalan menuntut pembubaran PKI, perombakan kabinet, dan penurunan harga (dikenal sebagai <strong>TRITURA</strong>).</li>
+                <li><strong>Lahirnya Supersemar:</strong> Di tengah tekanan hebat, Soekarno mengeluarkan Surat Perintah 11 Maret 1966 (Supersemar) yang memberikan wewenang kepada Soeharto untuk memulihkan keamanan. Surat ini menjadi tiket bagi Soeharto untuk secara de facto mengambil alih kekuasaan.</li>
+            </ul>
+            <p>Era Demokrasi Terpimpin yang penuh gejolak dan romantisme revolusioner telah berakhir. Panggung sejarah telah berganti. Indonesia memasuki babak baru yang sangat berbeda: era Orde Baru di bawah kepemimpinan Jenderal Soeharto.</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Sebuah rangkuman sejarah untuk memahami kompleksitas perjalanan Bangsa Indonesia.</p>
+    </footer>
+
+    <script>
+        // Script to highlight active nav link on scroll
+        const sections = document.querySelectorAll('.content-section');
+        const navLinks = document.querySelectorAll('nav a');
+        const navbar = document.getElementById('navbar');
+        const navHeight = navbar.offsetHeight;
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - navHeight - 20) { // Adjusted for nav height
+                    current = section.getAttribute('id');
+                }
+            });
+
+            // Special handling for nested IDs
+            if (current === 'early-rebellions') {
+                 if (pageYOffset >= document.getElementById('rms').offsetTop - navHeight - 20) {
+                    current = 'rms';
+                 }
+                 if (pageYOffset >= document.getElementById('andi-aziz').offsetTop - navHeight - 20) {
+                    current = 'andi-aziz';
+                 }
+            }
+
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
