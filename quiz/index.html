@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis Sejarah Indonesia (1945-1966)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Slab:wght@400;700&display=swap');
+
+        :root {
+            --bg-color: #f0f4f8;
+            --main-text: #333;
+            --header-color: #1e2a38;
+            --primary-color: #4a90e2;
+            --secondary-color: #f5a623;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --border-radius: 12px;
+            --correct-bg: #e6fffa;
+            --correct-border: #00bfa5;
+            --incorrect-bg: #fff0f3;
+            --incorrect-border: #ff4d6d;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--main-text);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.5rem;
+            color: var(--header-color);
+            margin: 0;
+        }
+
+        .question-block {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .question-block p {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 0;
+        }
+
+        .options div {
+            margin-bottom: 10px;
+        }
+
+        .options label {
+            display: block;
+            padding: 10px 15px;
+            border-radius: 6px;
+            border: 1px solid #eee;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .options label:hover {
+            background-color: #f5f5f5;
+        }
+
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+        
+        /* Styles for showing results */
+        label.correct {
+            background-color: var(--correct-bg);
+            border-color: var(--correct-border);
+            font-weight: bold;
+        }
+        
+        label.incorrect {
+            background-color: var(--incorrect-bg);
+            border-color: var(--incorrect-border);
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+            background-color: var(--primary-color);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #3a7ac8;
+        }
+
+        #results {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: none; /* Hidden by default */
+        }
+        
+        #results.pass {
+            background-color: var(--correct-bg);
+            color: var(--correct-border);
+        }
+
+        #results.fail {
+            background-color: var(--incorrect-bg);
+            color: var(--incorrect-border);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Kuis Sejarah Indonesia</h1>
+            <p>Uji pemahaman Anda tentang periode 1945-1966.</p>
+        </header>
+
+        <form id="quizForm">
+            <!-- Question 1 -->
+            <div class="question-block">
+                <p>1. Apa perbedaan mendasar antara tujuan pemberontakan Andi Aziz dengan pemberontakan RMS?</p>
+                <div class="options">
+                    <div><label><input type="radio" name="q1" value="a"> Andi Aziz ingin mendirikan negara Islam, sedangkan RMS ingin bergabung dengan Belanda.</label></div>
+                    <div><label><input type="radio" name="q1" value="b"> Andi Aziz menolak dominasi TNI dan ingin mempertahankan Negara Indonesia Timur, sedangkan RMS ingin memisahkan diri sepenuhnya dari Indonesia.</label></div>
+                    <div><label><input type="radio" name="q1" value="c"> Keduanya sama-sama ingin mendirikan negara merdeka yang terpisah dari Indonesia.</label></div>
+                    <div><label><input type="radio" name="q1" value="d"> Andi Aziz didukung oleh CIA, sedangkan RMS didukung oleh Uni Soviet.</label></div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-block">
+                <p>2. Apa ciri utama dari era Demokrasi Liberal (1950-1959) di Indonesia?</p>
+                <div class="options">
+                    <div><label><input type="radio" name="q2" value="a"> Kekuasaan presiden yang sangat kuat dan absolut.</label></div>
+                    <div><label><input type="radio" name="q2" value="b"> Pembangunan ekonomi yang sangat pesat dan stabil.</label></div>
+                    <div><label><input type="radio" name="q2" value="c"> Kabinet parlementer yang sering jatuh bangun dan ketidakstabilan politik.</label></div>
+                    <div><label><input type="radio" name="q2" value="d"> Hanya ada satu partai politik yang berkuasa, yaitu PNI.</label></div>
+                </div>
+            </div>
+            
+            <!-- Question 3 -->
+            <div class="question-block">
+                <p>3. Kegagalan Konstituante dalam merumuskan UUD baru menjadi salah satu pemicu dikeluarkannya...</p>
+                <div class="options">
+                    <div><label><input type="radio" name="q3" value="a"> Trikora</label></div>
+                    <div><label><input type="radio" name="q3" value="b"> Supersemar</label></div>
+                    <div><label><input type="radio" name="q3" value="c"> Dekrit Presiden 5 Juli 1959</label></div>
+                    <div><label><input type="radio" name="q3" value="d"> Dwikora</label></div>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-block">
+                <p>4. Apa motivasi utama di balik pemberontakan PRRI/Permesta?</p>
+                <div class="options">
+                    <div><label><input type="radio" name="q4" value="a"> Keinginan untuk mendirikan negara komunis di Sumatera dan Sulawesi.</label></div>
+                    <div><label><input type="radio" name="q4" value="b"> Penolakan terhadap ideologi Pancasila.</label></div>
+                    <div><label><input type="radio" name="q4" value="c"> Kekecewaan terhadap ketidakadilan ekonomi dan sentralisasi kekuasaan di Jakarta.</label></div>
+                    <div><label><input type="radio" name="q4" value="d"> Dukungan penuh dari Belanda untuk memecah belah Indonesia.</label></div>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-block">
+                <p>5. Konsep "Nasakom" yang digagas Soekarno bertujuan untuk menyatukan tiga kekuatan politik utama, yaitu...</p>
+                <div class="options">
+                    <div><label><input type="radio" name="q5" value="a"> Nasionalis, Sosialis, Komunis</label></div>
+                    <div><label><input type="radio" name="q5" value="b"> Nasionalis, Agama, Komunis</label></div>
+                    <div><label><input type="radio" name="q5" value="c"> Nasionalis, Angkatan Darat, Komunis</label></div>
+                    <div><label><input type="radio" name="q5" value="d"> NU, Sarekat Islam, Komunis</label></div>
+                </div>
+            </div>
+            
+            <!-- Question 6 -->
+            <div class="question-block">
+                <p>6. Manakah yang BUKAN merupakan ciri dari era Demokrasi Terpimpin?</p>
+                <div class="options">
+                    <div><label><input type="radio" name="q6" value="a"> Pers yang bebas dan kritis terhadap pemerintah.</label></div>
+                    <div><label><input type="radio" name="q6" value="b"> Pembangunan proyek-proyek mercusuar seperti Monas dan GBK.</label></div>
+                    <div><label><input type="radio" name="q6" value="c"> Kekuasaan presiden yang sangat dominan.</label></div>
+                    <div><label><input type="radio" name="q6" value="d"> Konfrontasi dengan Malaysia dan perebutan Irian Barat.</label></div>
+                </div>
+            </div>
+            
+            <!-- Question 7 -->
+            <div class="question-block">
+                <p>7. Apa isi dari Trikora yang dikumandangkan oleh Presiden Soekarno?</p>
+                <div class="options">
+                    <div><label><input type="radio" name="q7" value="a"> Perintah untuk "mengganyang" Malaysia.</label></div>
+                    <div><label><input type="radio" name="q7" value="b"> Tuntutan mahasiswa untuk membubarkan PKI dan menurunkan harga.</label></div>
+                    <div><label><input type="radio" name="q7" value="c"> Perintah untuk merebut Irian Barat dari tangan Belanda.</label></div>
+                    <div><label><input type="radio" name="q7" value="d"> Pernyataan kembali ke UUD 1945.</label></div>
+                </div>
+            </div>
+            
+            <!-- Question 8 -->
+            <div class="question-block">
+                <p>8. Tiga tuntutan mahasiswa yang dikenal dengan TRITURA setelah peristiwa G30S adalah...</p>
+                <div class="options">
+                    <div><label><input type="radio" name="q8" value="a"> Bubarkan PKI, Turunkan Soekarno, Adili Soeharto.</label></div>
+                    <div><label><input type="radio" name="q8" value="b"> Bubarkan PKI, Rombak Kabinet Dwikora, Turunkan Harga.</label></div>
+                    <div><label><input type="radio" name="q8" value="c"> Kembali ke UUD 1945, Bentuk MPRS, Ganyang Malaysia.</label></div>
+                    <div><label><input type="radio" name="q8" value="d"> Ambil alih aset asing, Bubarkan Masyumi, Turunkan Harga.</label></div>
+                </div>
+            </div>
+            
+             <!-- Question 9 -->
+            <div class="question-block">
+                <p>9. Surat yang dianggap sebagai titik peralihan kekuasaan dari Presiden Soekarno ke Mayor Jenderal Soeharto adalah...</p>
+                <div class="options">
+                    <div><label><input type="radio" name="q9" value="a"> Dekrit Presiden 5 Juli 1959</label></div>
+                    <div><label><input type="radio" name="q9" value="b"> Tap MPRS No. XXV/MPRS/1966</label></div>
+                    <div><label><input type="radio" name="q9" value="c"> Proklamasi Kemerdekaan</label></div>
+                    <div><label><input type="radio" name="q9" value="d"> Surat Perintah 11 Maret 1966 (Supersemar)</label></div>
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question-block">
+                <p>10. Salah satu penyebab utama buruknya kondisi ekonomi pada akhir era Demokrasi Terpimpin adalah...</p>
+                <div class="options">
+                    <div><label><input type="radio" name="q10" value="a"> Utang luar negeri yang sangat besar kepada Amerika Serikat.</label></div>
+                    <div><label><input type="radio" name="q10" value="b"> Pengeluaran besar untuk proyek mercusuar dan konfrontasi militer.</label></div>
+                    <div><label><input type="radio" name="q10" value="c"> Kegagalan panen besar-besaran akibat bencana alam.</label></div>
+                    <div><label><input type="radio" name="q10" value="d"> Blokade ekonomi yang dilakukan oleh negara-negara Asia Tenggara.</label></div>
+                </div>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="question-block">
+                <p>11. Menurut teks, mengapa banyak mantan prajurit KNIL di Makassar merasa cemas dengan rencana integrasi ke dalam APRIS (TNI)?</p>
+                <div class="options">
+                    <div><label><input type="radio" name="q11" value="a"> Karena mereka akan dipindahkan untuk bertugas di Jawa.</label></div>
+                    <div><label><input type="radio" name="q11" value="b"> Mereka menganggap TNI kurang profesional dan khawatir akan kehilangan status elite mereka.</label></div>
+                    <div><label><input type="radio" name="q11" value="c"> Pemerintah RIS menolak membayar pensiun mereka.</label></div>
+                    <div><label><input type="radio" name="q11" value="d"> Gaji yang ditawarkan oleh APRIS jauh lebih rendah.</label></div>
+                </div>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="question-block">
+                <p>12. Siapakah tokoh sipil yang menjadi otak di balik proklamasi Republik Maluku Selatan (RMS)?</p>
+                <div class="options">
+                    <div><label><input type="radio" name="q12" value="a"> Kapten Andi Aziz</label></div>
+                    <div><label><input type="radio" name="q12" value="b"> Letkol Slamet Riyadi</label></div>
+                    <div><label><input type="radio" name="q12" value="c"> Dr. Chris Soumokil</label></div>
+                    <div><label><input type="radio" name="q12" value="d"> Kolonel Ventje Sumual</label></div>
+                </div>
+            </div>
+
+            <!-- Question 13 -->
+            <div class="question-block">
+                <p>13. Istilah "Politik Mercusuar" pada era Demokrasi Terpimpin merujuk pada...</p>
+                <div class="options">
+                    <div><label><input type="radio" name="q13" value="a"> Kebijakan luar negeri yang netral dan tidak memihak blok manapun.</label></div>
+                    <div><label><input type="radio" name="q13" value="b"> Pembangunan proyek-proyek megah untuk menunjukkan kebesaran Indonesia di mata dunia.</label></div>
+                    <div><label><input type="radio" name="q13" value="c"> Program rahasia untuk mengembangkan senjata nuklir.</label></div>
+                    <div><label><input type="radio" name="q13" value="d"> Strategi ekonomi untuk fokus pada ekspor hasil laut.</label></div>
+                </div>
+            </div>
+
+            <!-- Question 14 -->
+            <div class="question-block">
+                <p>14. Dewan militer yang dibentuk di Sumatera Barat pimpinan Letkol Ahmad Husein sebagai bentuk protes terhadap pusat dikenal sebagai...</p>
+                <div class="options">
+                    <div><label><input type="radio" name="q14" value="a"> Dewan Gajah</label></div>
+                    <div><label><input type="radio" name="q14" value="b"> Dewan Garuda</label></div>
+                    <div><label><input type="radio" name="q14" value="c"> Dewan Manguni</label></div>
+                    <div><label><input type="radio" name="q14" value="d"> Dewan Banteng</label></div>
+                </div>
+            </div>
+
+            <!-- Question 15 -->
+            <div class="question-block">
+                <p>15. Penembakan jatuh pesawat yang dipiloti oleh Allen Pope mengungkap keterlibatan rahasia negara mana dalam mendukung pemberontakan PRRI/Permesta?</p>
+                <div class="options">
+                    <div><label><input type="radio" name="q15" value="a"> Uni Soviet</label></div>
+                    <div><label><input type="radio" name="q15" value="b"> Inggris</label></div>
+                    <div><label><input type="radio" name="q15" value="c"> Amerika Serikat (melalui CIA)</label></div>
+                    <div><label><input type="radio" name="q15" value="d"> Belanda</label></div>
+                </div>
+            </div>
+
+            <!-- Question 16 -->
+            <div class="question-block">
+                <p>16. Operasi militer untuk menentang pembentukan Federasi Malaysia yang dianggap sebagai "proyek nekolim" oleh Soekarno dikenal sebagai...</p>
+                <div class="options">
+                    <div><label><input type="radio" name="q16" value="a"> Operasi Trikora</label></div>
+                    <div><label><input type="radio" name="q16" value="b"> Operasi Dwikora</label></div>
+                    <div><label><input type="radio" name="q16" value="c"> Operasi Seroja</label></div>
+                    <div><label><input type="radio" name="q16" value="d"> Operasi Merdeka</label></div>
+                </div>
+            </div>
+
+            <!-- Question 17 -->
+            <div class="question-block">
+                <p>17. Teks menyebutkan adanya "Segitiga Kekuasaan Berbahaya" yang saling curiga pada akhir era Demokrasi Terpimpin. Siapa saja tiga kekuatan tersebut?</p>
+                <div class="options">
+                    <div><label><input type="radio" name="q17" value="a"> Soekarno, TNI Angkatan Laut, dan Partai Masyumi</label></div>
+                    <div><label><input type="radio" name="q17" value="b"> Soekarno, TNI Angkatan Darat, dan PKI</label></div>
+                    <div><label><input type="radio" name="q17" value="c"> Soeharto, TNI Angkatan Udara, dan PNI</label></div>
+                    <div><label><input type="radio" name="q17" value="d"> Mahasiswa, Buruh, dan Petani</label></div>
+                </div>
+            </div>
+
+            <!-- Question 18 -->
+            <div class="question-block">
+                <p>18. Salah satu dampak langsung dari Peristiwa Andi Aziz adalah...</p>
+                <div class="options">
+                    <div><label><input type="radio" name="q18" value="a"> Penguatan posisi Negara Indonesia Timur.</label></div>
+                    <div><label><input type="radio" name="q18" value="b"> Intervensi militer oleh PBB.</label></div>
+                    <div><label><input type="radio" name="q18" value="c"> Mempercepat proses pembubaran Republik Indonesia Serikat (RIS) dan kembali ke NKRI.</label></div>
+                    <div><label><input type="radio" name="q18" value="d"> Terbentuknya aliansi antara Makassar dengan RMS.</label></div>
+                </div>
+            </div>
+
+            <!-- Question 19 -->
+            <div class="question-block">
+                <p>19. Siapakah perwira tinggi TNI yang gugur dalam operasi penumpasan RMS di Ambon?</p>
+                <div class="options">
+                    <div><label><input type="radio" name="q19" value="a"> Jenderal Soedirman</label></div>
+                    <div><label><input type="radio" name="q19" value="b"> Letkol Slamet Riyadi</label></div>
+                    <div><label><input type="radio" name="q19" value="c"> Jenderal A.H. Nasution</label></div>
+                    <div><label><input type="radio" name="q19" value="d"> Mayor Jenderal Soeharto</label></div>
+                </div>
+            </div>
+            
+            <!-- Question 20 -->
+            <div class="question-block">
+                <p>20. Salah satu pelajaran penting dari kegagalan konsep Nasakom, seperti yang diimplikasikan dalam teks, adalah...</p>
+                <div class="options">
+                    <div><label><input type="radio" name="q20" value="a"> Bahwa persatuan hanya bisa dicapai melalui kekuatan militer.</label></div>
+                    <div><label><input type="radio" name="q20" value="b"> Bahwa ideologi asing seperti komunisme tidak cocok untuk Indonesia.</label></div>
+                    <div><label><input type="radio" name="q20" value="c"> Memaksa persatuan antara faksi-faksi yang saling bertentangan secara fundamental dapat menciptakan konflik yang lebih besar.</label></div>
+                    <div><label><input type="radio" name="q20" value="d"> Bahwa partai-partai agama seharusnya tidak terlibat dalam politik.</label></div>
+                </div>
+            </div>
+
+
+            <button type="submit" class="submit-btn">Lihat Hasil</button>
+        </form>
+
+        <div id="results"></div>
+        <div style="text-align: center;">
+            <a href="../index.html" class="back-link">← Kembali ke Materi</a>
+        </div>
+    </div>
+
+    <script>
+        const quizForm = document.getElementById('quizForm');
+        const resultsDiv = document.getElementById('results');
+        const correctAnswers = {
+            q1: 'b',
+            q2: 'c',
+            q3: 'c',
+            q4: 'c',
+            q5: 'b',
+            q6: 'a',
+            q7: 'c',
+            q8: 'b',
+            q9: 'd',
+            q10: 'b',
+            q11: 'b',
+            q12: 'c',
+            q13: 'b',
+            q14: 'd',
+            q15: 'c',
+            q16: 'b',
+            q17: 'b',
+            q18: 'c',
+            q19: 'b',
+            q20: 'c'
+        };
+        const totalQuestions = Object.keys(correctAnswers).length;
+
+        quizForm.addEventListener('submit', e => {
+            e.preventDefault();
+            
+            let score = 0;
+            const formData = new FormData(quizForm);
+
+            // Remove previous result classes
+            document.querySelectorAll('.options label').forEach(label => {
+                label.classList.remove('correct', 'incorrect');
+            });
+
+            for (const [question, userAnswer] of formData.entries()) {
+                const correctAnswer = correctAnswers[question];
+                const selectedLabel = document.querySelector(`input[name="${question}"][value="${userAnswer}"]`).parentElement;
+
+                if (userAnswer === correctAnswer) {
+                    score++;
+                    selectedLabel.classList.add('correct');
+                } else {
+                    selectedLabel.classList.add('incorrect');
+                    // Also show the correct answer
+                    const correctLabel = document.querySelector(`input[name="${question}"][value="${correctAnswer}"]`).parentElement;
+                    correctLabel.classList.add('correct');
+                }
+            }
+
+            resultsDiv.style.display = 'block';
+            const percentage = Math.round((score / totalQuestions) * 100);
+            
+            resultsDiv.innerHTML = `Skor Anda: ${score} dari ${totalQuestions} (${percentage}%)`;
+
+            if (percentage >= 70) {
+                resultsDiv.className = 'pass';
+            } else {
+                resultsDiv.className = 'fail';
+            }
+            
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
