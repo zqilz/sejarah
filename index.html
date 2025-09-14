@@ -248,6 +248,26 @@
             font-size: 0.9rem;
         }
 
+        /* Style for the new quiz link */
+        .quiz-link {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 20px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .quiz-link:hover {
+            background-color: #e69500; /* A slightly darker shade of secondary-color */
+            transform: translateY(-2px);
+            color: white;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             header h1 { font-size: 2.2rem; }
@@ -415,6 +435,12 @@
                 <li><strong>Dewan Garuda</strong> (Sumatera Selatan) pimpinan Letkol. Barlian</li>
                 <li><strong>Dewan Manguni</strong> (Sulawesi Utara) pimpinan Kolonel Ventje Sumual</li>
             </ul>
+
+            <!-- ADDED SECTION -->
+            <h3>Perbedaan dan Persamaan Inti</h3>
+            <p>Meskipun sering disebut sebagai satu gerakan, PRRI di Sumatra dan Permesta di Sulawesi memiliki konteks regional yang sedikit berbeda. <strong>Sumatra</strong> adalah pusat perkebunan dan sumber minyak yang vital bagi pendapatan negara. <strong>Sulawesi Utara</strong>, di sisi lain, adalah produsen utama kopra. Namun, <strong>persamaan nasib</strong> mereka jauh lebih kuat daripada perbedaannya: keduanya merasa sumber daya alam mereka dikuras habis oleh pusat tanpa mendapatkan kembali pembangunan yang sepadan. Kemarahan inilah yang menyatukan para kolonel di daerah dalam sebuah front bersama melawan Jakarta.</p>
+            <!-- END OF ADDED SECTION -->
+
             <p>Ketika tuntutan mereka untuk otonomi dan keadilan diabaikan, mereka mengambil langkah ekstrem. Pada 15 Februari 1958, PRRI (Pemerintahan Revolusioner Republik Indonesia) diproklamasikan di Padang, yang kemudian didukung oleh Permesta (Perjuangan Rakyat Semesta) di Sulawesi. Ini bukan untuk memisahkan diri, tetapi untuk "mengoreksi" pemerintah pusat.</p>
             <blockquote>"Kami tidak memberontak untuk memisahkan diri, kami memberontak karena kami juga Indonesia, dan kami menuntut keadilan!"</blockquote>
             <!-- Accessibility Improvement: Add tabindex="0" to make span focusable -->
@@ -449,6 +475,16 @@
                 <li><strong>Ekonomi Merosot:</strong> Politik "berdiri di atas kaki sendiri" (Berdikari) dan pengeluaran besar untuk proyek mercusuar serta konfrontasi militer menyebabkan ekonomi hancur. Inflasi meroket (mencapai lebih dari 600% pada 1965), dan rakyat harus antre untuk mendapatkan bahan pokok.</li>
                 <li><strong>Segitiga Kekuasaan Berbahaya:</strong> Di balik layar, terjadi pertarungan sengit antara tiga kekuatan: <strong>Soekarno</strong>, <strong>TNI AD</strong> (yang anti-komunis), dan <strong>PKI</strong> (yang semakin kuat dan didukung Soekarno). Ketiganya saling curiga, menciptakan suasana tegang seperti bom waktu.</li>
             </ul>
+
+            <!-- ADDED SECTION -->
+            <h3>Nilai Pembelajaran bagi Bangsa</h3>
+            <p>Era Demokrasi Terpimpin, dengan segala kegemilangan dan kegelapannya, meninggalkan pelajaran berharga bagi perjalanan bangsa Indonesia:</p>
+            <ul>
+                <li><strong>Bahaya Kekuasaan Absolut:</strong> Pemusatan kekuasaan di tangan satu pemimpin, meskipun dapat menciptakan stabilitas jangka pendek, terbukti mematikan demokrasi. Kritik dibungkam, pers dikekang, dan lawan politik disingkirkan, menunjukkan bahwa kekuasaan tanpa kontrol cenderung korup.</li>
+                <li><strong>Pentingnya Keseimbangan Ekonomi:</strong> Proyek-proyek besar yang membangkitkan kebanggaan nasional ("politik mercusuar") dan konfrontasi militer menjadi tidak berarti ketika kebutuhan dasar rakyat terabaikan. Pelajaran utamanya adalah bahwa legitimasi pemerintah tidak hanya dibangun di atas ideologi, tetapi juga di atas kemampuannya menyejahterakan warganya.</li>
+                <li><strong>Kerapuhan Persatuan Paksa:</strong> Konsep Nasakom, yang bertujuan mulia untuk menyatukan tiga kekuatan ideologi besar, dalam praktiknya justru menciptakan "bom waktu". Memaksa faksi-faksi yang saling bertentangan secara fundamental (terutama TNI AD dan PKI) untuk bekerja sama tanpa menyelesaikan akar konflik mereka hanya menunda dan memperbesar ledakan yang tak terhindarkan.</li>
+            </ul>
+            <!-- END OF ADDED SECTION -->
         </section>
 
         <section id="akhir-era" class="content-section">
@@ -467,6 +503,7 @@
     </main>
 
     <footer>
+        <a href="quiz/index.html" class="quiz-link">Uji Pemahaman Anda dengan Kuis!</a>
         <p>Sebuah rangkuman sejarah untuk memahami kompleksitas perjalanan Bangsa Indonesia.</p>
     </footer>
 
